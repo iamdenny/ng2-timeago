@@ -1,0 +1,23 @@
+{
+  "name": "ng2-timeago",
+  "version": "1.0.0",
+  "description": "Angular2 component to get time ago.",
+  "main": "timeago.ts",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xuhong/ng2-timeago.git"
+  },
+  "keywords": [
+    "angular2",
+    "timeago"
+  ],
+  "author": "xuhong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xuhong/ng2-timeago/issues"
+  },
+  "homepage": "https://github.com/xuhong/ng2-timeago#readme"
+}
