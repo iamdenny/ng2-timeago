@@ -1,6 +1,6 @@
 {
   "name": "ng2-timeago",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Angular2 component to get time ago.",
   "main": "src/timeago.ts",
   "scripts": {
