@@ -1,9 +1,8 @@
+///<reference path="../node_modules/angular2/typings/browser.d.ts"/>
 import {
   isDate,
   isNumber,
-  isPresent,
   Date,
-  DateWrapper,
   isBlank
 } from 'angular2/src/facade/lang'
 import {Input, Component, OnInit, OnDestroy} from 'angular2/core'
@@ -14,12 +13,12 @@ import {DatePipe} from 'angular2/common'
     template: `{{timeago}}`
 })
 export class TimeAgo implements OnInit, OnDestroy{
-    @Input() date: Date
+    @Input() time: Date
     @Input() live: boolean = true
     @Input() interval: number = 60 * 1000
     @Input() maxPeried: number = 365 * 24 * 60 * 60 * 1000
     @Input() afterMaxDateFormat: string = 'medium'
-    @Input() sufix: string = 'ago'
+    @Input() suffix: string = 'ago'
     private timeago: string
     private timer: any
     
@@ -54,7 +53,7 @@ export class TimeAgo implements OnInit, OnDestroy{
         
         for(i in peried){
             if(diff < peried[i]){
-                return this.makeupStr(j || 'minute', Math.round(diff / (peried[j] || 1)))
+                return this.makeupStr(j || 'second', Math.round(diff / (peried[j] || 1000)))
             }
             j = i
         }
@@ -62,7 +61,7 @@ export class TimeAgo implements OnInit, OnDestroy{
     }
     
     makeupStr(unit: string, n: number){
-        return n + ' ' + unit + (n > 1 ? 's' : '') + ' ' + this.sufix
+        return n + ' ' + unit + (n > 1 ? 's' : '') + ' ' + this.suffix
     }
     
     supports(obj: any): boolean { 
@@ -73,12 +72,12 @@ export class TimeAgo implements OnInit, OnDestroy{
         if(this.timer){
             clearInterval(this.timer)
         }
-        if(isBlank(this.date)){
-            console.warn(`date property is required.`)
-        }else if(!this.supports(this.date)){
-            console.error(`${this.date} isn't valid date format.`)
+        if(isBlank(this.time)){
+            console.warn(`time property is required.`)
+        }else if(!this.supports(this.time)){
+            console.error(`${this.time} isn't valid date format.`)
         }else{
-            this.transform(this.date)
+            this.transform(this.time)
         }
     }
     
