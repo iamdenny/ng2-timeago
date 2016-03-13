@@ -23,6 +23,7 @@ export function main() {
         it('Should return right time ago', (done: () => void) => {
             builder.createAsync(TimeAgoController).then((fixture) => {
                 fixture.detectChanges()
+                console.log('begin')
                 expect(true).toEqual(true)
             }).then(done).catch(done)
         })

@@ -5,36 +5,32 @@ module.exports = function (config) {
     config.set({
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
-        basePath: '',
+        basePath: '.',
 
 
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: ['jasmine'],
+        frameworks: ['jasmine', 'es6-shim'],
 
 
         // list of files / patterns to load in the browser
         files: [
-        // for Travis
-            'node_modules/es6-shim/es6-shim.js',
-
-        // zone-microtask must be included first as it contains a Promise monkey patch
-            'node_modules/zone.js/dist/zone-microtask.js',
-            'node_modules/zone.js/dist/long-stack-trace-zone.js',
-            'node_modules/zone.js/dist/jasmine-patch.js',
-            'node_modules/systemjs/dist/system.src.js',
-            'node_modules/reflect-metadata/Reflect.js',
-
-            { pattern: 'node_modules/angular2/**/*.js', included: false, watched: false, served: true },
-            { pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false, served: true },
-            { pattern: 'node_modules/systemjs/dist/system-polyfills.js', included: false, watched: false, served: true }, // PhantomJS2 (and possibly others) might require it
-
-            { pattern: 'src/timeago.ts', included: false, watched: true }, // source files
-            { pattern: 'tests/**/*.spec.ts', included: false, watched: true }, // test files
-            'karma-test-shim.js'
+            { pattern: 'node_modules/angular2/bundles/angular2-polyfills.js', included: true, watched: true },
+            { pattern: 'node_modules/systemjs/dist/system.src.js', included: true, watched: true },
+            {pattern: 'node_modules/typescript/lib/typescript.js', include: true, watched: true},
+            { pattern: 'node_modules/rxjs/bundles/Rx.js', included: true, watched: true },
+            { pattern: 'node_modules/angular2/bundles/angular2.dev.js', included: true, watched: true },
+            { pattern: 'node_modules/angular2/bundles/testing.dev.js', included: true, watched: true },
+            { pattern: 'karma-test-shim.js', included: true, watched: true },
+            { pattern: 'src/*.ts', included: false, watched: false },
+            { pattern: 'src/*.js', included: false, watched: true },
+            { pattern: 'src/*.js.map', included: false, watched: false },
         ],
 
-
+        proxies: {
+            '/src/': '/base/src/',
+        },
+        
         // list of files to exclude
         exclude: [
         ],
@@ -42,16 +38,16 @@ module.exports = function (config) {
 
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-        preprocessors: {
-            '**/*.ts': ['typescript']
-        },
+        // preprocessors: {
+        //     '**/*.ts': ['typescript']
+        // },
 
-        typescriptPreprocessor: {
-            options: require('./tsconfig.json').compilerOptions,
-            typings: [
-                "typings/main.d.ts"
-            ]
-        },
+        // typescriptPreprocessor: {
+        //     options: require('./tsconfig.json').compilerOptions,
+        //     typings: [
+        //         "typings/main.d.ts"
+        //     ]
+        // },
         
         // test results reporter to use
         // possible values: 'dots', 'progress'
@@ -79,6 +75,13 @@ module.exports = function (config) {
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
         browsers: ['Chrome'],
+        
+        plugins: [
+            'karma-jasmine',
+            'karma-coverage',
+            'karma-chrome-launcher',
+            'karma-es6-shim'
+        ],
 
 
         // Continuous Integration mode

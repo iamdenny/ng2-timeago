@@ -6,11 +6,10 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "removeComments": true,
-        "noImplicitAny": false,
-        "outDir": "./dist"
+        "noImplicitAny": false
     },
     "files": [
         "src/timeago.ts",
-        "tests/timeago.spec.ts" 
+        "src/timeago.spec.ts" 
     ]
 }

@@ -34,6 +34,8 @@
     "jasmine-core": "^2.4.1",
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^0.2.2",
+    "karma-coverage": "^0.5.5",
+    "karma-es6-shim": "^0.2.3",
     "karma-jasmine": "^0.3.7",
     "karma-typescript-preprocessor": "0.0.21",
     "reflect-metadata": "^0.1.2",
