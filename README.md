@@ -30,7 +30,7 @@ default 'ago', time ago suffix, you can use other words, eg: 'from now'.
 ### how to use 
 
 ```
-import {TimeAgo} from 'ng2-timeago'
+import {TimeAgo} from 'ng2-timeago/timeago'
 
 @Component({
     selector: 'foo',
