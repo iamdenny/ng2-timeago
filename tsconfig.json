@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "target": "es5",
-        "module": "system",
+        "module": "commonjs",
         "moduleResolution": "node",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
@@ -9,6 +9,7 @@
         "noImplicitAny": false
     },
     "files": [
+        "index.ts",
         "src/timeago.ts",
         "src/timeago.spec.ts" 
     ]

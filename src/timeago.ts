@@ -4,9 +4,9 @@ import {
   isNumber,
   Date,
   isBlank
-} from 'angular2/src/facade/lang'
-import {Input, Component, OnInit, OnDestroy} from 'angular2/core'
-import {DatePipe} from 'angular2/common'
+} from '@angular/core/src/facade/lang'
+import {Input, Component, OnInit, OnDestroy} from '@angular/core'
+import {DatePipe} from '@angular/common'
 
 @Component({
     selector: 'time-ago',
@@ -36,7 +36,7 @@ export class TimeAgo implements OnInit, OnDestroy{
         
         if (diff > this.maxPeried){
             let datePipe: DatePipe = new DatePipe()
-            return datePipe.transform(val, [this.afterMaxDateFormat])
+            return datePipe.transform(val, this.afterMaxDateFormat)
         }
         
         let peried: {[key: string]: number} = {
