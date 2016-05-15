@@ -2,4 +2,3 @@
 *.log
 node_modules/
 typings/
-src/*.js
