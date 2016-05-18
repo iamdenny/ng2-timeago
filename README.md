@@ -4,7 +4,7 @@ a small angular2 component for displaying how long ago from now.
 # installation
 use npm:
 
-``` npm insall ng2-timeago --save```
+``` npm install ng2-timeago --save```
 
 # property
 
@@ -34,7 +34,7 @@ import {TimeAgo} from 'ng2-timeago/timeago'
 
 @Component({
     selector: 'foo',
-    template: `<time-ago time="time" maxPerid="30*24*60*60"> `,
+    template: `<time-ago [time]="time" [maxPeriod]="30*24*60*60"> `,
     directives: [TimeAgo]
 })
 class Foo {
