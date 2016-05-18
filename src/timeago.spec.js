@@ -32,14 +32,14 @@ var TimeAgoController = (function () {
         this.time = new Date();
         this.live = true;
         this.interval = 60 * 1000;
-        this.maxPeried = 365 * 24 * 60 * 60 * 1000;
+        this.maxPeriod = 365 * 24 * 60 * 60 * 1000;
         this.format = 'short';
         this.suffix = 'ago';
     }
     TimeAgoController = __decorate([
         core_1.Component({
             selector: 'time-ago',
-            template: "\n      <time-ago [time]=\"time\" [live]=\"live\" [interval]=\"interval\" [maxPeried]=\"maxPeried\" [afterMaxDateFormate]=\"format\" [suffix]=\"suffix\" ></timeago>\n    ",
+            template: "\n      <time-ago [time]=\"time\" [live]=\"live\" [interval]=\"interval\" [maxPeriod]=\"maxPeriod\" [afterMaxDateFormate]=\"format\" [suffix]=\"suffix\" ></timeago>\n    ",
             directives: [timeago_1.TimeAgo]
         }), 
         __metadata('design:paramtypes', [])

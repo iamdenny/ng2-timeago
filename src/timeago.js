@@ -15,7 +15,7 @@ var TimeAgo = (function () {
     function TimeAgo() {
         this.live = true;
         this.interval = 60 * 1000;
-        this.maxPeried = 365 * 24 * 60 * 60 * 1000;
+        this.maxPeriod = 365 * 24 * 60 * 60 * 1000;
         this.afterMaxDateFormat = 'medium';
         this.suffix = 'ago';
     }
@@ -30,11 +30,11 @@ var TimeAgo = (function () {
     };
     TimeAgo.prototype.getTimeAgo = function (val) {
         var diff = new lang_1.Date().getTime() - new lang_1.Date(val).getTime();
-        if (diff > this.maxPeried) {
+        if (diff > this.maxPeriod) {
             var datePipe = new common_1.DatePipe();
             return datePipe.transform(val, this.afterMaxDateFormat);
         }
-        var peried = {
+        var period = {
             second: 1000,
             minute: 60 * 1000,
             hour: 60 * 60 * 1000,
@@ -43,16 +43,16 @@ var TimeAgo = (function () {
             month: 30 * 24 * 60 * 1000 * 60,
             year: 365 * 24 * 60 * 1000 * 60
         }, i, j;
-        for (i in peried) {
-            if (diff < peried[i]) {
-                return this.makeupStr(j || 'second', Math.round(diff / (peried[j] || 1000)));
+        for (i in period) {
+            if (diff < period[i]) {
+                return this.makeupStr(j || 'second', Math.round(diff / (period[j] || 1000)));
             }
             j = i;
         }
-        return this.makeupStr(i, Math.round(diff / peried[i]));
+        return this.makeupStr(i, Math.round(diff / period[i]));
     };
     TimeAgo.prototype.makeupStr = function (unit, n) {
-        return n + ' ' + unit + (n > 1 ? 's' : '') + ' ' + this.suffix;
+        return n + ' ' + unit + (n != 1 ? 's' : '') + ' ' + this.suffix;
     };
     TimeAgo.prototype.supports = function (obj) {
         return lang_1.isDate(obj) || lang_1.isNumber(obj);
@@ -91,7 +91,7 @@ var TimeAgo = (function () {
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Number)
-    ], TimeAgo.prototype, "maxPeried", void 0);
+    ], TimeAgo.prototype, "maxPeriod", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', String)
