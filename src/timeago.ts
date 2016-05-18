@@ -60,7 +60,7 @@ export class TimeAgo implements OnInit, OnDestroy{
     }
     
     makeupStr(unit: string, n: number){
-        return n + ' ' + unit + (n > 1 ? 's' : '') + ' ' + this.suffix
+        return n + ' ' + unit + (n != 1 ? 's' : '') + ' ' + this.suffix
     }
     
     supports(obj: any): boolean { 
