@@ -1,4 +1,3 @@
-///<reference path="../node_modules/angular2/typings/browser.d.ts"/>
 import {
   isDate,
   isNumber,
@@ -16,7 +15,7 @@ export class TimeAgo implements OnInit, OnDestroy{
     @Input() time: Date
     @Input() live: boolean = true
     @Input() interval: number = 60 * 1000
-    @Input() maxPeried: number = 365 * 24 * 60 * 60 * 1000
+    @Input() maxPeriod: number = 365 * 24 * 60 * 60 * 1000
     @Input() afterMaxDateFormat: string = 'medium'
     @Input() suffix: string = 'ago'
     private timeago: string
@@ -34,12 +33,12 @@ export class TimeAgo implements OnInit, OnDestroy{
     getTimeAgo(val){
         let diff: number = new Date().getTime() - new Date(val).getTime()
         
-        if (diff > this.maxPeried){
+        if (diff > this.maxPeriod){
             let datePipe: DatePipe = new DatePipe()
             return datePipe.transform(val, this.afterMaxDateFormat)
         }
         
-        let peried: {[key: string]: number} = {
+        let period: {[key: string]: number} = {
             second: 1000,
             minute: 60 * 1000,
             hour: 60 * 60 * 1000,
@@ -51,13 +50,13 @@ export class TimeAgo implements OnInit, OnDestroy{
         i: string,
         j: string
         
-        for(i in peried){
-            if(diff < peried[i]){
-                return this.makeupStr(j || 'second', Math.round(diff / (peried[j] || 1000)))
+        for(i in period){
+            if(diff < period[i]){
+                return this.makeupStr(j || 'second', Math.round(diff / (period[j] || 1000)))
             }
             j = i
         }
-        return this.makeupStr(i, Math.round(diff / peried[i]))
+        return this.makeupStr(i, Math.round(diff / period[i]))
     }
     
     makeupStr(unit: string, n: number){
