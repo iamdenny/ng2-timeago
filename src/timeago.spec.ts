@@ -33,7 +33,7 @@ export function main() {
 @Component({
     selector: 'time-ago',
     template: `
-      <time-ago [time]="time" [live]="live" [interval]="interval" [maxPeried]="maxPeried" [afterMaxDateFormate]="format" [suffix]="suffix" ></timeago>
+      <time-ago [time]="time" [live]="live" [interval]="interval" [maxPeriod]="maxPeriod" [afterMaxDateFormate]="format" [suffix]="suffix" ></timeago>
     `,
     directives: [TimeAgo]
 })
@@ -42,7 +42,7 @@ class TimeAgoController {
     time: Date = new Date()
     live: boolean = true
     interval: number = 60 * 1000
-    maxPeried: number = 365 * 24 * 60 * 60 * 1000
+    maxPeriod: number = 365 * 24 * 60 * 60 * 1000
     format: string = 'short'
     suffix: string = 'ago'
 }
