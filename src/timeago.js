@@ -31,7 +31,7 @@ var TimeAgo = (function () {
     TimeAgo.prototype.getTimeAgo = function (val) {
         var diff = new lang_1.Date().getTime() - new lang_1.Date(val).getTime();
         if (diff > this.maxPeriod) {
-            var datePipe = new common_1.DatePipe();
+            var datePipe = new common_1.DatePipe('');
             return datePipe.transform(val, this.afterMaxDateFormat);
         }
         var period = {
