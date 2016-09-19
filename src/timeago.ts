@@ -1,9 +1,3 @@
-import {
-  isDate,
-  isNumber,
-  Date,
-  isBlank
-} from '@angular/core/src/facade/lang'
 import {Input, Component, OnInit, OnDestroy} from '@angular/core'
 import {DatePipe} from '@angular/common'
 
@@ -64,14 +58,14 @@ export class TimeAgo implements OnInit, OnDestroy{
     }
     
     supports(obj: any): boolean { 
-        return isDate(obj) || isNumber(obj) 
+        return obj instanceof Date || typeof obj === 'number'
     }
     
     ngOnInit(){
         if(this.timer){
             clearInterval(this.timer)
         }
-        if(isBlank(this.time)){
+        if(this.time === undefined || this.time === null){
             console.warn(`time property is required.`)
         }else if(!this.supports(this.time)){
             console.error(`${this.time} isn't valid date format.`)
