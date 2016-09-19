@@ -1,6 +1,6 @@
 {
   "name": "ng2-timeago",
-  "version": "1.0.5",
+  "version": "1.0.5.1",
   "description": "Angular2 component to get time ago.",
   "main": "index.js",
   "scripts": {
@@ -22,8 +22,8 @@
   },
   "homepage": "https://github.com/xuhong/ng2-timeago#readme",
   "devDependencies": {
-    "@angular/core": "2.0.0-rc.1",
-    "@angular/common": "2.0.0-rc.1",
+    "@angular/core": "2.0.0",
+    "@angular/common": "2.0.0",
     "jasmine-core": "^2.4.1",
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^0.2.2",
