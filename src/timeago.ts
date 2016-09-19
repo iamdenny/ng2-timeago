@@ -34,7 +34,7 @@ export class TimeAgo implements OnInit, OnDestroy{
         let diff: number = new Date().getTime() - new Date(val).getTime()
         
         if (diff > this.maxPeriod){
-            let datePipe: DatePipe = new DatePipe()
+            let datePipe: DatePipe = new DatePipe('')
             return datePipe.transform(val, this.afterMaxDateFormat)
         }
         
