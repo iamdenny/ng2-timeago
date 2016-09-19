@@ -8,7 +8,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var lang_1 = require('@angular/core/src/facade/lang');
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var TimeAgo = (function () {
@@ -29,7 +28,7 @@ var TimeAgo = (function () {
         }
     };
     TimeAgo.prototype.getTimeAgo = function (val) {
-        var diff = new lang_1.Date().getTime() - new lang_1.Date(val).getTime();
+        var diff = new Date().getTime() - new Date(val).getTime();
         if (diff > this.maxPeriod) {
             var datePipe = new common_1.DatePipe('');
             return datePipe.transform(val, this.afterMaxDateFormat);
@@ -55,13 +54,13 @@ var TimeAgo = (function () {
         return n + ' ' + unit + (n != 1 ? 's' : '') + ' ' + this.suffix;
     };
     TimeAgo.prototype.supports = function (obj) {
-        return lang_1.isDate(obj) || lang_1.isNumber(obj);
+        return obj instanceof Date || typeof obj === 'number'
     };
     TimeAgo.prototype.ngOnInit = function () {
         if (this.timer) {
             clearInterval(this.timer);
         }
-        if (lang_1.isBlank(this.time)) {
+        if (this.time === undefined || this.time === null) {
             console.warn("time property is required.");
         }
         else if (!this.supports(this.time)) {
@@ -76,10 +75,6 @@ var TimeAgo = (function () {
             clearInterval(this.timer);
         }
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', lang_1.Date)
-    ], TimeAgo.prototype, "time", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Boolean)
